@@ -47,7 +47,7 @@ public class CartActivity extends AppCompatActivity {
         cartSnackBar = Snackbar.make(relative_root, "", Snackbar.LENGTH_INDEFINITE);
         cartSnackBar.setBackgroundTint(ContextCompat.getColor(getApplicationContext(), R.color.green));
         cartSnackBar.setText("₹190 | 3 items");
-        cartSnackBar.setAction("Place Order", view -> startActivity(new Intent(getApplicationContext(), PaymentActivity.class)));
+        cartSnackBar.setAction("Place Order", view -> startActivity(new Intent(getApplicationContext(), PlaceOrderActivity.class)));
         updateCartUI();
     }
 
