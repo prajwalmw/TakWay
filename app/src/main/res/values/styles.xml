@@ -2,6 +2,9 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     <item name="snackbarStyle">@style/snackbar_style</item>
     <item name="snackbarButtonStyle">@style/snackbar_button</item>
     <item name="snackbarTextViewStyle">@style/snackbar_text</item>
@@ -79,6 +82,23 @@
     <style name="AlertDialogBodyText" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <style name="SubTitleCollapsed" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+        <item name="fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:color">#ffffff</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:drawableStart">@drawable/ic_star_white</item>
+    </style>
+
+    <style name="SubTitleExpanded" parent="TextAppearance.AppCompat.Headline">
+        <item name="fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:color">#000000</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:drawableStart">@drawable/ic_star</item>
     </style>
 
 </resources>

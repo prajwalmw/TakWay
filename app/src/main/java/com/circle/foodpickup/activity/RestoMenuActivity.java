@@ -50,7 +50,7 @@ public class RestoMenuActivity extends AppCompatActivity {
 
         cartSnackBar = Snackbar.make(relative_root, "", Snackbar.LENGTH_INDEFINITE);
         cartSnackBar.setBackgroundTint(ContextCompat.getColor(getApplicationContext(), R.color.green));
-        cartSnackBar.setText("₹200 | 1 item");
+        cartSnackBar.setText("₹190 | 1 item");
         cartSnackBar.setAction("View Cart", view -> startActivity(new Intent(getApplicationContext(), CartActivity.class)));
         updateCartUI();
     }
@@ -74,7 +74,7 @@ public class RestoMenuActivity extends AppCompatActivity {
             cartSnackBar.show();
         } else {
            // preferencesHelper.clearCartPreferences()
-            cartSnackBar.dismiss();
+          //  cartSnackBar.dismiss();
         }
 
      /*   if (shop?.configurationModel?.isOrderTaken == 1) {
