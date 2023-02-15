@@ -8,11 +8,14 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 
 import com.circle.foodpickup.R;
 import com.circle.foodpickup.adapter.CartAdapter;
 import com.circle.foodpickup.adapter.RestoMenuAdapter;
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.radiobutton.MaterialRadioButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -23,6 +26,8 @@ public class CartActivity extends AppCompatActivity {
     private ArrayList<String> cartList = new ArrayList<>();
     private Snackbar cartSnackBar;
     private RelativeLayout relative_root;
+    private MaterialRadioButton radio_credit, radio_debit, radio_bhim, radio_paytm;
+    private MaterialCardView card_credit, card_debit_details, card_bhim, card_paytm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,44 @@ public class CartActivity extends AppCompatActivity {
         cartList.add("1 x Chicken Lollipop");
         cartList.add("1 x Chicken 65");
         cartList.add("1 x Chicken Loaded Burger");
+
+        radio_credit = findViewById(R.id.radio_credit);
+        card_credit = findViewById(R.id.card_credit);
+
+        radio_debit = findViewById(R.id.radio_debit);
+        card_debit_details = findViewById(R.id.card_debit_details);
+
+        radio_bhim = findViewById(R.id.radio_bhim);
+        card_bhim = findViewById(R.id.card_bhim);
+
+        radio_paytm = findViewById(R.id.radio_paytm);
+        card_paytm = findViewById(R.id.card_paytm);
+
+        radio_credit.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b)
+                card_credit.setVisibility(View.VISIBLE);
+            else
+                card_credit.setVisibility(View.GONE);
+        });
+
+        radio_debit.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b)
+                card_debit_details.setVisibility(View.VISIBLE);
+            else
+                card_debit_details.setVisibility(View.GONE);
+        });
+        radio_bhim.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b)
+                card_bhim.setVisibility(View.VISIBLE);
+            else
+                card_bhim.setVisibility(View.GONE);
+        });
+        radio_paytm.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b)
+                card_paytm.setVisibility(View.VISIBLE);
+            else
+                card_paytm.setVisibility(View.GONE);
+        });
 
         relative_root = findViewById(R.id.relative_root);
         recycler_food_items = findViewById(R.id.recycler_food_items);
