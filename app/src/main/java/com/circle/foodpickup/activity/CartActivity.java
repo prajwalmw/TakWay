@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.circle.foodpickup.R;
 import com.circle.foodpickup.adapter.CartAdapter;
@@ -17,10 +20,15 @@ import com.circle.foodpickup.adapter.RestoMenuAdapter;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.radiobutton.MaterialRadioButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.razorpay.Checkout;
 
+import org.json.JSONObject;
 import java.util.ArrayList;
 
-public class CartActivity extends AppCompatActivity {
+import com.razorpay.PaymentData;
+import com.razorpay.PaymentResultWithDataListener;
+
+public class CartActivity extends AppCompatActivity implements PaymentResultWithDataListener{
     private RecyclerView recycler_food_items;
     private CartAdapter adapter;
     private ArrayList<String> cartList = new ArrayList<>();
@@ -28,6 +36,7 @@ public class CartActivity extends AppCompatActivity {
     private RelativeLayout relative_root;
     private MaterialRadioButton radio_credit, radio_debit, radio_bhim, radio_paytm;
     private MaterialCardView card_credit, card_debit_details, card_bhim, card_paytm;
+    private Checkout checkout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +48,11 @@ public class CartActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getColor(R.color.colorAccent));
         }
+
+        Checkout.preload(getApplicationContext());
+        checkout = new Checkout();
+        checkout.setKeyID("rzp_test_ca1RdBXkpgl9Bq");
+
 
         cartList.add("1 x Chicken Lollipop");
         cartList.add("1 x Chicken 65");
@@ -90,8 +104,60 @@ public class CartActivity extends AppCompatActivity {
         cartSnackBar = Snackbar.make(relative_root, "", Snackbar.LENGTH_INDEFINITE);
         cartSnackBar.setBackgroundTint(ContextCompat.getColor(getApplicationContext(), R.color.green));
         cartSnackBar.setText("₹190 | 3 items");
-        cartSnackBar.setAction("Place Order", view -> startActivity(new Intent(getApplicationContext(), PlaceOrderActivity.class)));
+        cartSnackBar.show();
+       /* cartSnackBar.setAction("Place Order", view -> startActivity(new Intent(getApplicationContext(),
+                PlaceOrderActivity.class)));*/
+        cartSnackBar.setAction("Place Order", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                initPayment();
+            }
+        });
+
         updateCartUI();
+    }
+
+    private void initPayment() {
+
+        checkout.setImage(R.drawable.ic_shop);
+
+        /**
+         * Reference to current activity
+         */
+        final Activity activity = this;
+
+        /**
+         * Pass your payment options to the Razorpay Checkout as a JSONObject
+         */
+        try {
+            JSONObject options = new JSONObject();
+
+            options.put("name", "TakWay");
+            options.put("description", "Why wait when you can take!");
+            options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.jpg");
+         //   options.put("order_id", "order_DBJOWzybf0sJbb");//from response of step 3.
+            options.put("theme.color", "#FF4141");
+            options.put("currency", "INR");
+            options.put("amount", "100");//pass amount in currency subunits
+            options.put("prefill.email", "takway@example.com");
+            options.put("prefill.contact","7304154312");
+
+            JSONObject retryObj = new JSONObject();
+            retryObj.put("enabled", true);
+            retryObj.put("max_count", 4);
+            options.put("retry", retryObj);
+
+            checkout.open(activity, options);
+
+        } catch(Exception e) {
+            Log.e("TAG", "Error in starting Razorpay Checkout", e);
+        }
+
+
+/*
+        startActivity(new Intent(CartActivity.this.getApplicationContext(),
+                PlaceOrderActivity.class));
+*/
     }
 
     private void updateCartUI() {
@@ -136,4 +202,20 @@ public class CartActivity extends AppCompatActivity {
         }*/
     }
 
+    @Override
+    public void onPaymentSuccess(String razorpayPaymentID, PaymentData paymentData) {
+        Toast.makeText(this, "Payment Successful.", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPaymentError(int code, String response, PaymentData paymentData) {
+        Toast.makeText(this, "Payment Failure.", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (cartSnackBar != null && !cartSnackBar.isShown())
+            cartSnackBar.show();
+    }
 }

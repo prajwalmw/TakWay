@@ -40,5 +40,7 @@ dependencies {
     implementation 'com.ss.bannerslider:bannerslider:2.0.0'
     implementation 'com.airbnb.android:lottie:3.4.0'
 
+    implementation 'com.razorpay:checkout:1.6.33'   // razorpay
+
 
 }
