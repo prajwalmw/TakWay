@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,19 @@ public class RestoMenuAdapter extends RecyclerView.Adapter<RestoMenuAdapter.MyVi
     public void onBindViewHolder(@NonNull MyViewModel holder, int position) {
         String resto_name = menuList.get(position);
         holder.text_food_name.setText(resto_name);
+
+        holder.image_add.setOnClickListener(v -> {
+            if (holder.text_quantity.getText().toString().equalsIgnoreCase("0")) {
+                int count = 0;
+                count = count + 1;
+                holder.text_quantity.setText(String.valueOf(count));
+            }
+            else {
+                int count = 1;
+                count = count + 1;
+                holder.text_quantity.setText(String.valueOf(count));
+            }
+        });
     }
 
     @Override
@@ -41,11 +55,14 @@ public class RestoMenuAdapter extends RecyclerView.Adapter<RestoMenuAdapter.MyVi
     }
 
     public class MyViewModel extends RecyclerView.ViewHolder {
-        TextView text_food_name;
+        TextView text_food_name, text_quantity;
+        ImageView image_add;
 
         public MyViewModel(@NonNull View itemView) {
             super(itemView);
             text_food_name = itemView.findViewById(R.id.text_food_name);
+            text_quantity = itemView.findViewById(R.id.text_quantity);
+            image_add = itemView.findViewById(R.id.image_add);
         }
     }
 }

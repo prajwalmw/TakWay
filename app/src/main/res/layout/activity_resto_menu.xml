@@ -36,6 +36,8 @@
             android:layout_gravity="bottom|end"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="28dp"
+            android:visibility="gone"
+            tools:visibility="visible"
             android:src="@drawable/ic_call_white" />
 
 
@@ -95,6 +97,8 @@
             android:id="@+id/text_search_menu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:drawableStart="@drawable/ic_drawer_search_small"
@@ -110,6 +114,8 @@
             android:id="@+id/switch_veg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
             android:layout_gravity="center"
             android:layout_marginStart="16dp"
             android:fontFamily="@font/open_sans_semibold"

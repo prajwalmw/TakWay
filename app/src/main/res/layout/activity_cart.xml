@@ -232,7 +232,9 @@
                     android:gravity="center|start"
                     android:padding="16dp"
                     android:text="Enter Delivery Location"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
 
                 <View
                     android:layout_width="match_parent"
@@ -240,6 +242,8 @@
 
                 <!--Payment-->
                 <TextView
+                    android:visibility="gone"
+                    tools:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
@@ -253,6 +257,8 @@
                     android:textSize="22sp" />
 
                 <TextView
+                    android:visibility="gone"
+                    tools:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
@@ -265,6 +271,8 @@
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/layout_credit_card"
+                    android:visibility="gone"
+                    tools:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -276,7 +284,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        >
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -430,7 +439,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:cardCornerRadius="0dp"
-                    app:cardElevation="0dp">
+                    app:cardElevation="0dp"
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -587,7 +598,9 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginTop="8dp"
                     app:cardCornerRadius="0dp"
-                    app:cardElevation="0dp">
+                    app:cardElevation="0dp"
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -678,7 +691,9 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginTop="8dp"
                     app:cardCornerRadius="0dp"
-                    app:cardElevation="0dp">
+                    app:cardElevation="0dp"
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
