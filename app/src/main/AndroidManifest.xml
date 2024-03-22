@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,9 +14,31 @@
         android:theme="@style/Theme.Grab"
         tools:targetApi="31">
         <activity
-            android:name=".activity.OrderDetailActivity"
+            android:name=".activity.UserSetupScreen"
             android:exported="false"
             android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".activity.ProfileOTP_Login"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.PrivacyPolicyActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activity.OrderDetailActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activity.PlaceOrderActivity"
             android:exported="false"
@@ -31,23 +53,15 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activity.MainActivity"
-            android:exported="true"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"
+            android:theme="@style/AppTheme" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_test_ca1RdBXkpgl9Bq" />
-        
     </application>
 
 </manifest>

@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">TakWay</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_fullscreen_image">FullscreenImageActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="i_agree_and_accept_privacy_policy">I agree and accept <a href="https://circlecommunityhey.wixsite.com/circle-community/privacy-policy">Privacy Policy</a></string>
+    <string name="i_agree_and_accept_terms_of_use">I agree and accept <a href="https://circlecommunityhey.wixsite.com/circle-community/terms-conditions">Terms of Use</a></string>
+    <string name="no_previous_details_found_welcome_to_heshe_chat">No previous details found. \nWelcome to Circle!</string>
+    <string name="visit"><b><u>visit</u></b></string>
+    <string name="show_more"><u>show more</u></string>
+    <string name="show_less"><u>show less</u></string>
 </resources>
