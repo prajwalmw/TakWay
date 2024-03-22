@@ -205,6 +205,8 @@ public class CartActivity extends AppCompatActivity implements PaymentResultWith
     @Override
     public void onPaymentSuccess(String razorpayPaymentID, PaymentData paymentData) {
         Toast.makeText(this, "Payment Successful.", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(CartActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override

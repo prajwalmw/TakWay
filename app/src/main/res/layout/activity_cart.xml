@@ -115,6 +115,8 @@
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
                         android:id="@+id/radio_delivery"
+                        android:visibility="gone"
+                        tools:visibility="visible"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -202,6 +204,8 @@
 
 
                 <TextView
+                    android:visibility="gone"
+                    tools:visibility="visible"
                     android:id="@+id/text_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
